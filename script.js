@@ -46,7 +46,7 @@ div.addEventListener('click', (event) =>{
     renderData(data.filter(data =>{
         if(event.target.parentNode.id == `${data.date}`){
             
-            if(event.target.media_type == "image"){
+            if(data.media_type == "image"){
                 divDetails.insertAdjacentHTML("beforeend",`
                 <a href="" id="x-btn">X</a>
                 <h1>${data.title} (${data.media_type})</h1>
