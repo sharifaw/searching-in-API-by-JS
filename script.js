@@ -59,7 +59,11 @@ div.addEventListener('click', (event) =>{
                 <a href="" id="x-btn">X</a>
                 <h1>${data.title} (${data.media_type})</h1>
                 <p id="explanation">${data.explanation}</p>
-                <a href="${data.url}" target="_blank><span>to watch the video</span></a>
+                <a href="${data.url}" target="_blank"><span>to watch the video</span></a>
+                <br><br>
+                <a href="${data.url}" target="_blank">
+                <img id="videoImg" class="img" src="./Imges/test.jpg">
+                </a>
                 <a href="${data.url}" target="_blank"><embed src="${data.url}" ></a> 
                 `)
             }
@@ -79,9 +83,18 @@ div.addEventListener('click', (event) =>{
 function renderData (data){
     for (dataType of data){
         console.log('thumbnail_url ',dataType.thumbnail_url);
-       if(dataType.media_type !== "other"){
+       if(dataType.media_type === "image"){
            div.insertAdjacentHTML(`beforeend`,`<div id="${dataType.date}" class="div-container">
             <strong>${dataType.media_type}</strong>
+            <embed class="img" src="${dataType.url}">
+            <h4>${dataType.title}<br> ${dataType.date}</h4>
+            </div>
+           `)
+        }
+        else if (dataType.media_type === "video"){
+            div.insertAdjacentHTML(`beforeend`,`<div id="${dataType.date}" class="div-container">
+            <strong>${dataType.media_type}</strong>
+            <img id="videoImg" class="img" src="./Imges/test.jpg">
             <embed class="img" src="${dataType.url}">
             <h4>${dataType.title}<br> ${dataType.date}</h4>
             </div>
