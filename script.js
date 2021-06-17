@@ -29,23 +29,18 @@ button.addEventListener("click",event =>
         fetch(`https://api.nasa.gov/planetary/apod?api_key=0b37pre4Depu0jUcAQSvbSWdEecH676vdpmU4qHp&count=${searchInput.value}`)
         .then(response =>{ return response.json()})
         .then(result =>{
-            
             data = result;    
             document.getElementById("loading").remove();
-            renderData(result); 
-            console.log(data);
-        
+            renderData(result);         
         });
     
     }
 });
 
 div.addEventListener('click', (event) =>{
-    event.preventDefault();
     divDetails.innerHTML="";
     renderData(data.filter(data =>{
         if(event.target.parentNode.id == `${data.date}`){
-            
             if(data.media_type == "image"){
                 divDetails.insertAdjacentHTML("beforeend",`
                 <a href="" id="x-btn">X</a>
@@ -82,7 +77,6 @@ div.addEventListener('click', (event) =>{
 
 function renderData (data){
     for (dataType of data){
-        console.log('thumbnail_url ',dataType.thumbnail_url);
        if(dataType.media_type === "image"){
            div.insertAdjacentHTML(`beforeend`,`<div id="${dataType.date}" class="div-container">
             <strong>${dataType.media_type}</strong>
